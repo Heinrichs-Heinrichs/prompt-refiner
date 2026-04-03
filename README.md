@@ -1,60 +1,52 @@
 # Prompt Refiner
 
-A Claude Code plugin that adds a `/refine` command for quick prompt disambiguation. Before Claude responds, you rate 4 key dimensions with a single keypress each — turning vague prompts into focused, prioritized ones.
+> You know what you want. You just don't type it all out. This plugin bridges the gap.
 
-## The Problem
+A [Claude Code](https://claude.ai/claude-code) plugin that turns vague prompts into prioritized ones — with 4 keystrokes.
 
-Every AI prompt is a compromise. You have a picture in your head but type only a fraction of it. The AI fills the gaps with assumptions — and often gets it wrong.
+## Why
 
-The bottleneck isn't AI quality, it's context loss between your head and the input field. You *could* specify more, but you don't — because the effort only shows in the bad output.
+Every prompt you write is incomplete. You have a detailed picture in your head, but you type a sentence. Claude fills the gaps with assumptions. Sometimes it nails it. Often it doesn't. You iterate, re-prompt, get frustrated.
 
-## The Solution
+You *could* write more context upfront. But you won't — because the effort doesn't feel worth it until you see the mediocre output.
 
-Instead of typing more context, you **rate dimensions**. The plugin identifies what's ambiguous in your prompt and presents 4 key decision points. You press 1-4 for each, and Claude knows your priorities.
+Prompt Refiner fixes this with a Tinder-like interaction: before Claude responds, it shows you 4 dimensions where your prompt is ambiguous. You rate each one with a single keypress. Done.
 
-**4 keystrokes. ~5 seconds. Done.**
-
-## Example
-
-**Without** `/refine` — "give me a lemon muffin recipe":
-
-> Basic recipe, 7 steps, glaze listed as "optional". Gets the job done, nothing more.
-
-**With** `/refine` — same prompt, 4 keypresses:
+## Before & After
 
 ```
 /refine give me a lemon muffin recipe
 ```
 
-Claude identifies 4 dimensions. You rate each with a single keypress:
+Claude identifies 4 ambiguous dimensions — you rate each instantly:
 
-```
-  Effort     Glaze    Texture   Lemon
-  ─────────────────────────────────────
-  1. not relevant       Skip
-  2. don't care         AI decides
-  3. relevant           Handle carefully
-  4. very important     Top priority
-```
+| Dimension | Your rating |
+|-----------|------------|
+| Effort | don't care |
+| Glaze | **very important** |
+| Texture | relevant |
+| Lemon Intensity | **very important** |
 
-Say you rate: Effort → don't care, Glaze → very important, Texture → relevant, Lemon → very important.
+**Without /refine** you get a basic 7-step recipe where glaze is an afterthought ("optional: drizzle with powdered sugar").
 
-The result: a recipe with lemon streusel topping, a detailed glaze section (powdered sugar, zest, fleur de sel), tips on texture ("fold gently — a few lumps are fine"), microplane advice for the zest, and storage instructions. The dimensions you rated as important got real depth.
+**With /refine** you get streusel topping with lemon zest and fleur de sel, a proper glaze section with technique ("drizzle over lukewarm muffins — it soaks in and forms a smooth surface"), texture tips ("fold gently, a few lumps are fine"), and microplane advice for the zest. The dimensions you cared about got real depth. The ones you didn't care about stayed lean.
 
-**Same prompt. 4 keystrokes. Dramatically different output.**
+Same prompt. 4 keystrokes. ~5 seconds. Completely different result.
 
 ## The Scale
 
-| Key | Level | Meaning |
-|-----|-------|---------|
-| 1 | not relevant | Guardrail — don't invest effort here |
-| 2 | don't care | Freedom — AI decides (the most important option) |
-| 3 | relevant | Handle carefully |
-| 4 | very important | Top priority — maximum effort |
+```
+1  not relevant     "Don't bother with this."
+2  don't care       "AI decides — I trust you."
+3  relevant         "Handle this carefully."
+4  very important   "This is what I care about most."
+```
 
-"Don't care" is the most powerful option. It tells the AI: *I trust your judgment here.* That's not "unimportant" — it's explicit permission to be creative.
+**"Don't care" is the most powerful option.** It's not "unimportant" — it's explicit permission. You're telling Claude: *use your best judgment here, I won't second-guess you.* That signal is just as valuable as "very important".
 
 ## Install
+
+In Claude Code:
 
 ```
 /plugin marketplace add Heinrichs-Heinrichs/prompt-refiner
@@ -64,20 +56,19 @@ The result: a recipe with lemon streusel topping, a detailed glaze section (powd
 ## Usage
 
 ```
-/refine Build me a login page
+/refine <your prompt>
 ```
 
-Claude identifies 4 ambiguous dimensions (e.g. Auth, Styling, Security, Errors), you rate each with a single keypress, and Claude responds with your priorities in mind.
+That's it. Claude analyzes your prompt, shows 4 dimensions, you press 1-4 for each, and the response reflects your priorities. The ratings are applied invisibly — you won't see them mentioned in the output.
 
-## How It Works
+Works with any kind of prompt: code, writing, recipes, architecture decisions, design briefs.
 
-1. You type `/refine <your prompt>`
-2. Claude analyzes the prompt and identifies 4 vague dimensions
-3. You see each dimension as a question — press 1-4 to rate
-4. Claude applies your ratings invisibly to its response
+## Under the Hood
 
-No API keys needed. No external dependencies. Just one markdown file that tells Claude how to use its native `AskUserQuestion` tool.
+No API keys. No external dependencies. No background processes.
+
+The entire plugin is a single markdown file that instructs Claude how to use its built-in `AskUserQuestion` tool. When you type `/refine`, Claude reads the instruction, identifies ambiguous dimensions in your prompt, asks you to rate them, and adjusts its response accordingly.
 
 ## License
 
-MIT
+MIT — [Heinrichs & Heinrichs](https://github.com/Heinrichs-Heinrichs)
