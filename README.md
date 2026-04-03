@@ -24,8 +24,12 @@ Identifies ambiguous dimensions in your prompt and lets you rate their importanc
 **Example:**
 
 ```
-> /refine give me a lemon muffin recipe
+/refine give me a lemon muffin recipe
+```
 
+Claude shows 4 dimensions. You rate each with a single keypress:
+
+```
   ┌ Effort   Glaze   Texture   Lemon   Submit ┐
 
   Effort — Simple vs. elaborate?
@@ -33,58 +37,17 @@ Identifies ambiguous dimensions in your prompt and lets you rate their importanc
   2. don't care        AI decides        ← you pick this
   3. relevant          Handle carefully
   4. very important    Top priority
-
-  Glaze — Drizzle vs. proper icing?
-  4. very important    Top priority      ← you pick this
-
-  Texture — Dense vs. fluffy?
-  3. relevant          Handle carefully  ← you pick this
-
-  Lemon — Subtle vs. intense?
-  4. very important    Top priority      ← you pick this
 ```
 
-**Without /refine** — basic recipe, 7 steps, glaze is "optional":
+**Without /refine:**
 
-```
-Zutaten:
-- 250 g Mehl, 150 g Zucker, 2 Eier, 120 ml Öl ...
+<img src="assets/without-refine.png" width="600" alt="Without /refine — basic recipe, glaze is optional" />
 
-Zubereitung:
-1. Ofen auf 180 °C vorheizen.
-2. Trockene Zutaten mischen.
-...
-7. Optional mit Zitronenglasur beträufeln.
-```
+**With /refine** — after rating Glaze and Lemon as "very important":
 
-**With /refine** — same prompt, after rating Glaze and Lemon as "very important":
+<img src="assets/with-refine.png" width="600" alt="With /refine — streusel topping, detailed glaze, texture tips, microplane advice" />
 
-```
-Zutaten:
-  Teig: 250 g Mehl, 150 g Zucker, 120 ml Buttermilch,
-        Saft + Abrieb von 2 Bio-Zitronen, 1 TL Vanilleextrakt ...
-  Zitronen-Glasur: 150 g Puderzucker, Zitronensaft,
-        Abrieb von 1 Bio-Zitrone, 1 Prise Fleur de Sel
-  Streusel-Topping: 60 g Mehl, 40 g kalte Butter,
-        1 EL Zitronenzeste, 1 Prise Fleur de Sel
-
-Zubereitung:
-  Streusel vorbereiten:
-    Mehl, Zucker und Zeste mischen. Kalte Butter einarbeiten ...
-  Teig:
-    1. Nur kurz verrühren — ein paar Klumpen sind ok.
-    ...
-  Glasur:
-    Puderzucker sieben, Zitronensaft löffelweise einrühren ...
-    Über die lauwarmen Muffins träufeln — so zieht sie ein
-    und bildet trotzdem eine glatte Oberfläche.
-
-Tipps:
-- Zeste immer mit feiner Microplane reiben
-- Glasur erst kurz vor dem Servieren, wenn sie knackig bleiben soll
-```
-
-The dimensions you rated as important got depth. The ones you didn't care about stayed lean.
+Same prompt. 4 keystrokes. The dimensions you cared about got depth.
 
 ## The Scale
 
