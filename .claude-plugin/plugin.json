@@ -1,0 +1,12 @@
+{
+  "name": "prompt-refiner",
+  "description": "Tinder-style prompt refinement — rate dimensions with a single keypress before Claude responds",
+  "version": "1.0.0",
+  "author": {
+    "name": "Heinrichs & Heinrichs",
+    "url": "https://github.com/Heinrichs-Heinrichs"
+  },
+  "repository": "https://github.com/Heinrichs-Heinrichs/prompt-refiner",
+  "license": "MIT",
+  "keywords": ["prompt", "refinement", "disambiguation", "priorities", "ux"]
+}

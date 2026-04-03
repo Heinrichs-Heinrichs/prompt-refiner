@@ -1,0 +1,20 @@
+{
+  "name": "prompt-refiner",
+  "owner": {
+    "name": "Heinrichs & Heinrichs",
+    "url": "https://github.com/Heinrichs-Heinrichs"
+  },
+  "metadata": {
+    "description": "Tinder-style prompt refinement for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "prompt-refiner",
+      "source": "./",
+      "description": "Rate prompt dimensions with a single keypress before Claude responds",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}
