@@ -41,11 +41,70 @@ Claude shows 4 dimensions. You rate each with a single keypress:
 
 **Without /refine:**
 
-<img src="assets/without-refine.png" width="600" alt="Without /refine — basic recipe, glaze is optional" />
+```
+Lemon Muffins (12 pieces)
+
+Ingredients:
+- 250 g flour, 150 g sugar, 2 tsp baking powder, ¼ tsp salt,
+  2 eggs, 120 ml oil, 125 ml milk, zest of 2 lemons, 3 tbsp lemon juice
+
+Glaze (optional):
+- 100 g powdered sugar, 2-3 tbsp lemon juice
+
+Instructions:
+1. Preheat oven to 180 °C, line muffin tin.
+2. Mix dry ingredients.
+3. Whisk wet ingredients.
+4. Combine — stir briefly, batter can be lumpy.
+5. Divide into 12 cups.
+6. Bake 20-25 min (toothpick test).
+7. Cool, optionally drizzle with glaze.
+```
 
 **With /refine** — after rating Glaze and Lemon as "very important":
 
-<img src="assets/with-refine.png" width="600" alt="With /refine — streusel topping, detailed glaze, texture tips, microplane advice" />
+```
+Lemon Muffins (12 pieces)
+
+Ingredients:
+  Batter: 250 g flour, 150 g sugar, 2 tsp baking powder, ¼ tsp salt,
+    2 eggs, 120 ml buttermilk, 80 ml neutral oil,
+    juice of 2 lemons (~80 ml), zest of 2 organic lemons, 1 tsp vanilla
+
+  Lemon Glaze: 150 g powdered sugar, 2-3 tbsp fresh lemon juice,
+    zest of 1 organic lemon, 1 pinch fleur de sel
+
+  Streusel Topping: 60 g flour, 40 g cold butter (cubed),
+    30 g sugar, 1 tbsp lemon zest, 1 pinch fleur de sel
+
+Instructions:
+  Streusel:
+    Mix flour, sugar and zest. Work in cold butter until coarse
+    crumbs form. Mix in fleur de sel. Refrigerate.
+
+  Batter:
+    1. Preheat to 190 °C. Line muffin tin.
+    2. Combine dry ingredients.
+    3. Whisk wet ingredients with lemon juice, zest and vanilla.
+    4. Fold wet into dry. Stir briefly — a few lumps are fine.
+       Overmixing makes muffins tough.
+    5. Fill cups ¾ full. Scatter streusel on top.
+
+  Baking:
+    18-22 min at 190 °C. Toothpick test. Cool 10 min in tin,
+    then transfer to wire rack.
+
+  Glaze:
+    Sift powdered sugar. Stir in lemon juice one spoonful at a time
+    until thick but pourable. Mix in zest and salt. Drizzle over
+    lukewarm muffins — it soaks in and forms a smooth surface.
+
+Tips:
+- The streusel + glaze combo gives two textures: crunchy and smooth-sweet
+- Always use a fine microplane for zest — only the yellow layer, never the
+  white pith
+- Keep airtight for 3 days. Add glaze just before serving for crunch.
+```
 
 Same prompt. 4 keystrokes. The dimensions you cared about got depth.
 
