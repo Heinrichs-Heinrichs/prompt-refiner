@@ -14,14 +14,45 @@ Instead of typing more context, you **rate dimensions**. The plugin identifies w
 
 **4 keystrokes. ~5 seconds. Done.**
 
-The scale:
+## Example
+
+**Without** `/refine` — "give me a lemon muffin recipe":
+
+> Basic recipe, 7 steps, glaze listed as "optional". Gets the job done, nothing more.
+
+**With** `/refine` — same prompt, 4 keypresses:
+
+```
+/refine give me a lemon muffin recipe
+```
+
+Claude identifies 4 dimensions. You rate each with a single keypress:
+
+```
+  Effort     Glaze    Texture   Lemon
+  ─────────────────────────────────────
+  1. not relevant       Skip
+  2. don't care         AI decides
+  3. relevant           Handle carefully
+  4. very important     Top priority
+```
+
+Say you rate: Effort → don't care, Glaze → very important, Texture → relevant, Lemon → very important.
+
+The result: a recipe with lemon streusel topping, a detailed glaze section (powdered sugar, zest, fleur de sel), tips on texture ("fold gently — a few lumps are fine"), microplane advice for the zest, and storage instructions. The dimensions you rated as important got real depth.
+
+**Same prompt. 4 keystrokes. Dramatically different output.**
+
+## The Scale
 
 | Key | Level | Meaning |
 |-----|-------|---------|
-| 1 | nicht relevant | Guardrail — don't invest effort here |
-| 2 | egal | Freedom — AI decides freely |
+| 1 | not relevant | Guardrail — don't invest effort here |
+| 2 | don't care | Freedom — AI decides (the most important option) |
 | 3 | relevant | Handle carefully |
-| 4 | besonders wichtig | Top priority — maximum effort |
+| 4 | very important | Top priority — maximum effort |
+
+"Don't care" is the most powerful option. It tells the AI: *I trust your judgment here.* That's not "unimportant" — it's explicit permission to be creative.
 
 ## Install
 
@@ -45,7 +76,7 @@ Claude identifies 4 ambiguous dimensions (e.g. Auth, Styling, Security, Errors),
 3. You see each dimension as a question — press 1-4 to rate
 4. Claude applies your ratings invisibly to its response
 
-No API keys needed. No external dependencies. Just one markdown file that tells Claude how to use `AskUserQuestion`.
+No API keys needed. No external dependencies. Just one markdown file that tells Claude how to use its native `AskUserQuestion` tool.
 
 ## License
 
