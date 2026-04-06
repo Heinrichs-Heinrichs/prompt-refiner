@@ -1,6 +1,6 @@
 # Prompt Refiner
 
-Ping-pong your way to a precise answer. Quick questions, zero effort, better output.
+4 clicks instead of 40 words. Same result.
 
 ## Install
 
@@ -9,101 +9,66 @@ Ping-pong your way to a precise answer. Quick questions, zero effort, better out
 /plugin install prompt-refiner@prompt-refiner
 ```
 
-## Command
+## The Idea
 
-### `/prompt-refiner:ask`
+You know what you want. You just don't want to type it all out.
 
-Asks quick multiple-choice questions to understand your intent before Claude responds. Like the Akinator game — but for prompts.
+Instead of crafting the perfect prompt, answer a few quick multiple-choice questions. Claude narrows down your intent through elimination — like Akinator, but for prompts. Each round builds on the last, getting closer to exactly what you mean.
 
-**Usage:**
-
-```
-/prompt-refiner:ask <your prompt>
-```
-
-**Example:**
+## Example
 
 ```
-/prompt-refiner:ask write an email to my boss
+/prompt-refiner:ask plan a trip
 ```
 
-Claude starts a ping-pong:
-
 ```
-Round 1:  "What's it about?"
-          → Raise | Time off | Resignation | don't care
+Round 1:  "What kind of trip?"
+          → Beach & relax | City & culture | Active & adventure | don't care
 
-You: Raise
+You: Active & adventure
 
-Round 2:  "What tone?" + "Mention a specific number?"
-          → Confident | Diplomatic | don't care
-          → Yes, name a figure | No, request a meeting first | don't care
+Round 2:  "How long?" + "Traveling with?"
+          → Weekend | ~5 days | 2+ weeks | don't care
+          → Solo | With partner | Group of friends | don't care
 
-You: Diplomatic, Request a meeting
+You: ~5 days, With partner
 
-Round 3:  "How detailed?"
-          → Short & direct | Thorough with reasoning | don't care
+Round 3:  "Budget per person?"
+          → Budget (<€500) | Mid-range | Splurge | don't care
 
-You: Thorough with reasoning
-
-Claude: [enough clarity] → writes the email
+You: Mid-range
 ```
 
-3 rounds. A few clicks. The answer matches exactly what you had in mind.
-
-**Without `/prompt-refiner:ask`:**
+Claude now has the same clarity as if you had typed:
 
 ```
-Subject: Meeting Request
-
-Dear [Boss],
-
-I would like to schedule a meeting to discuss my current
-compensation. Please let me know a convenient time.
-
-Best regards
+Plan a 5-day adventure trip for two, mid-range budget,
+active outdoor activities over sightseeing, somewhere in
+Europe reachable by train, no resort vibes, we like hiking
+and local food
 ```
 
-**With `/prompt-refiner:ask`** — after clarifying tone, detail level, and approach:
+**3 rounds. 4 clicks. Zero typing.**
 
-```
-Subject: Request for a Compensation Discussion
-
-Dear [Boss],
-
-Over the past year, I've taken on several responsibilities beyond
-my original role — including leading the Q3 migration project and
-mentoring two junior developers on the team.
-
-I'm proud of what we've accomplished, and I'd welcome the
-opportunity to sit down and discuss how my compensation might
-reflect these contributions going forward.
-
-Would any time next week work for a 20-minute conversation?
-I'm flexible and happy to adjust to your schedule.
-
-Best regards
-```
-
-Same prompt. A few clicks. The answer has depth where it matters.
+You didn't have to formulate any of that. You just picked options.
 
 ## How It Works
 
 1. You type `/prompt-refiner:ask <prompt>`
-2. Claude asks short multiple-choice questions (1-4 per round)
-3. You pick answers — every question has a "don't care" option
-4. Claude stops when it has enough clarity
-5. Claude responds with your intent baked in — without mentioning the questions
+2. Claude asks 1-4 multiple-choice questions per round
+3. You click — every question has a "don't care" option
+4. Each round builds on your previous answers (narrowing down, not repeating)
+5. Claude stops when it has enough clarity and responds
 
-**Every question has a "don't care / AI decides" option.** You never have to have an opinion. Skip what you don't care about, focus on what matters.
+**Every question has a "don't care / AI decides" option.** You never have to have an opinion. Skip what you don't care about, focus on what matters to you.
 
-## Question Types
+## Why Not Just Ask Claude Directly?
 
-| Type | When | Example |
-|------|------|---------|
-| Choices | Real alternatives exist | "Which DB?" → Postgres / Mongo / don't care |
-| Scale | It's about effort/depth | "How important is error handling?" → skip / don't care / careful / top priority |
-| Binary | Only two directions | "With or without tests?" → With / Without / don't care |
+You can. But then Claude either:
+- **Answers immediately** — generic, because it guessed your intent
+- **Asks back in free text** — now you're typing paragraphs to answer its questions
+
+This plugin gives you the precision of a detailed prompt with the effort of a few clicks. The questions are multiple-choice, they build on each other, and you can skip any you don't care about.
 
 ## License
 
