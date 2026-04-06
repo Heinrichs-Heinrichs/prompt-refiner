@@ -1,4 +1,4 @@
-# Akinator
+# Prompt Refiner
 
 Ping-pong your way to a precise answer. Quick questions, zero effort, better output.
 
@@ -6,25 +6,25 @@ Ping-pong your way to a precise answer. Quick questions, zero effort, better out
 
 ```
 /plugin marketplace add Heinrichs-Heinrichs/prompt-refiner
-/plugin install prompt-refiner@akinator
+/plugin install prompt-refiner@prompt-refiner
 ```
 
 ## Command
 
-### `/akinator`
+### `/prompt-refiner:ask`
 
 Asks quick multiple-choice questions to understand your intent before Claude responds. Like the Akinator game — but for prompts.
 
 **Usage:**
 
 ```
-/akinator <your prompt>
+/prompt-refiner:ask <your prompt>
 ```
 
 **Example:**
 
 ```
-/akinator write an email to my boss
+/prompt-refiner:ask write an email to my boss
 ```
 
 Claude starts a ping-pong:
@@ -51,7 +51,7 @@ Claude: [enough clarity] → writes the email
 
 3 rounds. A few clicks. The answer matches exactly what you had in mind.
 
-**Without /akinator:**
+**Without `/prompt-refiner:ask`:**
 
 ```
 Subject: Meeting Request
@@ -64,7 +64,7 @@ compensation. Please let me know a convenient time.
 Best regards
 ```
 
-**With /akinator** — after clarifying tone, detail level, and approach:
+**With `/prompt-refiner:ask`** — after clarifying tone, detail level, and approach:
 
 ```
 Subject: Request for a Compensation Discussion
@@ -89,7 +89,7 @@ Same prompt. A few clicks. The answer has depth where it matters.
 
 ## How It Works
 
-1. You type `/akinator <prompt>`
+1. You type `/prompt-refiner:ask <prompt>`
 2. Claude asks short multiple-choice questions (1-4 per round)
 3. You pick answers — every question has a "don't care" option
 4. Claude stops when it has enough clarity
