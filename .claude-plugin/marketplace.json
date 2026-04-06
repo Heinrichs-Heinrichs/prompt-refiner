@@ -1,19 +1,19 @@
 {
-  "name": "prompt-refiner",
+  "name": "akinator",
   "owner": {
     "name": "Heinrichs & Heinrichs",
     "url": "https://github.com/Heinrichs-Heinrichs"
   },
   "metadata": {
-    "description": "Tinder-style prompt refinement for Claude Code",
-    "version": "1.0.0"
+    "description": "Akinator-style intent clarification for Claude Code",
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "prompt-refiner",
+      "name": "akinator",
       "source": "./",
-      "description": "Rate prompt dimensions with a single keypress before Claude responds",
-      "version": "1.0.0",
+      "description": "Iterative ping-pong questions to clarify your intent before Claude responds",
+      "version": "2.0.0",
       "category": "productivity"
     }
   ]

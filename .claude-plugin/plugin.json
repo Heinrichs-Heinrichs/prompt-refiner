@@ -1,12 +1,12 @@
 {
-  "name": "prompt-refiner",
-  "description": "Tinder-style prompt refinement — rate dimensions with a single keypress before Claude responds",
-  "version": "1.0.0",
+  "name": "akinator",
+  "description": "Akinator-style ping-pong — clarifies your intent before Claude responds",
+  "version": "2.0.0",
   "author": {
     "name": "Heinrichs & Heinrichs",
     "url": "https://github.com/Heinrichs-Heinrichs"
   },
   "repository": "https://github.com/Heinrichs-Heinrichs/prompt-refiner",
   "license": "MIT",
-  "keywords": ["prompt", "refinement", "disambiguation", "priorities", "ux"]
+  "keywords": ["prompt", "akinator", "intent", "clarification", "ping-pong", "ux"]
 }

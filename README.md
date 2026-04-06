@@ -1,130 +1,109 @@
-# Prompt Refiner
+# Akinator
 
-Rate what matters before Claude responds. 4 dimensions, 4 keystrokes, better output.
+Ping-pong your way to a precise answer. Quick questions, zero effort, better output.
 
 ## Install
 
 ```
 /plugin marketplace add Heinrichs-Heinrichs/prompt-refiner
-/plugin install prompt-refiner@prompt-refiner
+/plugin install prompt-refiner@akinator
 ```
 
 ## Command
 
-### `/refine`
+### `/akinator`
 
-Identifies ambiguous dimensions in your prompt and lets you rate their importance before Claude responds.
+Asks quick multiple-choice questions to understand your intent before Claude responds. Like the Akinator game — but for prompts.
 
 **Usage:**
 
 ```
-/refine <your prompt>
+/akinator <your prompt>
 ```
 
 **Example:**
 
 ```
-/refine give me a lemon muffin recipe
+/akinator write an email to my boss
 ```
 
-Claude shows 4 dimensions. You rate each with a single keypress:
+Claude starts a ping-pong:
 
 ```
-  ┌ Effort   Glaze   Texture   Lemon   Submit ┐
+Round 1:  "What's it about?"
+          → Raise | Time off | Resignation | don't care
 
-  Effort — Simple vs. elaborate?
-  1. not relevant      Skip
-  2. don't care        AI decides        ← you pick this
-  3. relevant          Handle carefully
-  4. very important    Top priority
+You: Raise
+
+Round 2:  "What tone?" + "Mention a specific number?"
+          → Confident | Diplomatic | don't care
+          → Yes, name a figure | No, request a meeting first | don't care
+
+You: Diplomatic, Request a meeting
+
+Round 3:  "How detailed?"
+          → Short & direct | Thorough with reasoning | don't care
+
+You: Thorough with reasoning
+
+Claude: [enough clarity] → writes the email
 ```
 
-**Without /refine:**
+3 rounds. A few clicks. The answer matches exactly what you had in mind.
+
+**Without /akinator:**
 
 ```
-Lemon Muffins (12 pieces)
+Subject: Meeting Request
 
-Ingredients:
-- 250 g flour, 150 g sugar, 2 tsp baking powder, ¼ tsp salt,
-  2 eggs, 120 ml oil, 125 ml milk, zest of 2 lemons, 3 tbsp lemon juice
+Dear [Boss],
 
-Glaze (optional):
-- 100 g powdered sugar, 2-3 tbsp lemon juice
+I would like to schedule a meeting to discuss my current
+compensation. Please let me know a convenient time.
 
-Instructions:
-1. Preheat oven to 180 °C, line muffin tin.
-2. Mix dry ingredients.
-3. Whisk wet ingredients.
-4. Combine — stir briefly, batter can be lumpy.
-5. Divide into 12 cups.
-6. Bake 20-25 min (toothpick test).
-7. Cool, optionally drizzle with glaze.
+Best regards
 ```
 
-**With /refine** — after rating Glaze and Lemon as "very important":
+**With /akinator** — after clarifying tone, detail level, and approach:
 
 ```
-Lemon Muffins (12 pieces)
+Subject: Request for a Compensation Discussion
 
-Ingredients:
-  Batter: 250 g flour, 150 g sugar, 2 tsp baking powder, ¼ tsp salt,
-    2 eggs, 120 ml buttermilk, 80 ml neutral oil,
-    juice of 2 lemons (~80 ml), zest of 2 organic lemons, 1 tsp vanilla
+Dear [Boss],
 
-  Lemon Glaze: 150 g powdered sugar, 2-3 tbsp fresh lemon juice,
-    zest of 1 organic lemon, 1 pinch fleur de sel
+Over the past year, I've taken on several responsibilities beyond
+my original role — including leading the Q3 migration project and
+mentoring two junior developers on the team.
 
-  Streusel Topping: 60 g flour, 40 g cold butter (cubed),
-    30 g sugar, 1 tbsp lemon zest, 1 pinch fleur de sel
+I'm proud of what we've accomplished, and I'd welcome the
+opportunity to sit down and discuss how my compensation might
+reflect these contributions going forward.
 
-Instructions:
-  Streusel:
-    Mix flour, sugar and zest. Work in cold butter until coarse
-    crumbs form. Mix in fleur de sel. Refrigerate.
+Would any time next week work for a 20-minute conversation?
+I'm flexible and happy to adjust to your schedule.
 
-  Batter:
-    1. Preheat to 190 °C. Line muffin tin.
-    2. Combine dry ingredients.
-    3. Whisk wet ingredients with lemon juice, zest and vanilla.
-    4. Fold wet into dry. Stir briefly — a few lumps are fine.
-       Overmixing makes muffins tough.
-    5. Fill cups ¾ full. Scatter streusel on top.
-
-  Baking:
-    18-22 min at 190 °C. Toothpick test. Cool 10 min in tin,
-    then transfer to wire rack.
-
-  Glaze:
-    Sift powdered sugar. Stir in lemon juice one spoonful at a time
-    until thick but pourable. Mix in zest and salt. Drizzle over
-    lukewarm muffins — it soaks in and forms a smooth surface.
-
-Tips:
-- The streusel + glaze combo gives two textures: crunchy and smooth-sweet
-- Always use a fine microplane for zest — only the yellow layer, never the
-  white pith
-- Keep airtight for 3 days. Add glaze just before serving for crunch.
+Best regards
 ```
 
-Same prompt. 4 keystrokes. The dimensions you cared about got depth.
-
-## The Scale
-
-| Key | Level | What it tells Claude |
-|-----|-------|---------------------|
-| 1 | not relevant | Guardrail — skip this entirely |
-| 2 | don't care | Freedom — AI decides (this is the most useful option) |
-| 3 | relevant | Handle with care |
-| 4 | very important | Top priority — maximum effort |
+Same prompt. A few clicks. The answer has depth where it matters.
 
 ## How It Works
 
-1. You type `/refine <prompt>`
-2. Claude identifies 4 ambiguous dimensions in your prompt
-3. You rate each with a single keypress (1-4)
-4. Claude responds with your priorities baked in — without mentioning them
+1. You type `/akinator <prompt>`
+2. Claude asks short multiple-choice questions (1-4 per round)
+3. You pick answers — every question has a "don't care" option
+4. Claude stops when it has enough clarity
+5. Claude responds with your intent baked in — without mentioning the questions
 
-No API keys. No dependencies. The entire plugin is one markdown file that uses Claude's built-in `AskUserQuestion` tool.
+**Every question has a "don't care / AI decides" option.** You never have to have an opinion. Skip what you don't care about, focus on what matters.
+
+## Question Types
+
+| Type | When | Example |
+|------|------|---------|
+| Choices | Real alternatives exist | "Which DB?" → Postgres / Mongo / don't care |
+| Scale | It's about effort/depth | "How important is error handling?" → skip / don't care / careful / top priority |
+| Binary | Only two directions | "With or without tests?" → With / Without / don't care |
 
 ## License
 
