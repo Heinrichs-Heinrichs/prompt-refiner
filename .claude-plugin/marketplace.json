@@ -1,5 +1,5 @@
 {
-  "name": "akinator",
+  "name": "prompt-refiner",
   "owner": {
     "name": "Heinrichs & Heinrichs",
     "url": "https://github.com/Heinrichs-Heinrichs"
@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "akinator",
+      "name": "prompt-refiner",
       "source": "./",
       "description": "Iterative ping-pong questions to clarify your intent before Claude responds",
       "version": "2.0.0",

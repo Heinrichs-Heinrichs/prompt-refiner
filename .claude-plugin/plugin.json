@@ -1,5 +1,5 @@
 {
-  "name": "akinator",
+  "name": "prompt-refiner",
   "description": "Akinator-style ping-pong — clarifies your intent before Claude responds",
   "version": "2.0.0",
   "author": {
